@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green Swap - Item Details</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script defer src="js/script.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo">Green Swap</div>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="browse.html">Browse Items</a></li>
+          <li><a href="upload.html">Upload Item</a></li>
+          <li><a href="login.html">Login / Signup</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle navigation menu">
+          &#9776;
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container item-details-container">
+    <h2>Item Details</h2>
+    <div id="itemDetails" class="item-details">
+      <!-- Item details will be dynamically loaded here -->
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2025 Green Swap. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { db, doc, getDoc } from './firebase-init.js';
+
+    async function loadItemDetails() {
+      const params = new URLSearchParams(window.location.search);
+      const itemId = params.get('id');
+      const itemDetailsContainer = document.getElementById('itemDetails');
+
+      if (!itemId) {
+        itemDetailsContainer.innerHTML = '<p>Item ID not specified.</p>';
+        return;
+      }
+
+      try {
+        const docRef = doc(db, 'uploadedItems', itemId);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const item = docSnap.data();
+          itemDetailsContainer.innerHTML = `
+            <div class="item-card">
+              <img src="${item.imageData || 'https://via.placeholder.com/400x300?text=No+Image'}" alt="${item.itemName}" />
+              <h3>${item.itemName}</h3>
+              <p><strong>Description:</strong> ${item.description}</p>
+              <p><strong>Condition:</strong> ${item.condition}</p>
+              <p><strong>Category:</strong> ${item.category}</p>
+              <p><strong>Desired Swap Item:</strong> ${item.desiredItem || 'N/A'}</p>
+            </div>
+          `;
+        } else {
+          itemDetailsContainer.innerHTML = '<p>Item not found.</p>';
+        }
+      } catch (error) {
+        console.error('Error loading item details:', error);
+        itemDetailsContainer.innerHTML = '<p>Failed to load item details.</p>';
+      }
+    }
+
+    loadItemDetails();
+  </script>
+</body>
+</html>

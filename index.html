@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green Swap - Home</title>
+  <link rel="stylesheet" href="css/style.css" />
+<script type="module" defer src="js/script.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo">Green Swap</div>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="browse.html">Browse Items</a></li>
+          <li><a href="upload.html">Upload Item</a></li>
+          <li><a href="login.html">Login / Signup</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle navigation menu">
+          &#9776;
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <h1>Swap what you don’t need for what you do.</h1>
+        <a href="signup.html" class="btn btn-primary">Get Started</a>
+        <button onclick="window.location.href='dashboard.html'" class="btn btn-secondary" style="margin-left: 1rem;">Go to Dashboard</button>
+      </div>
+    </section>
+
+    <section class="featured-items container">
+      <h2>Featured Items</h2>
+      <div id="featuredItemsGrid" class="items-grid">
+        <!-- Dynamic featured items will be loaded here -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2025 Green Swap. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

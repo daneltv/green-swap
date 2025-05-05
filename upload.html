@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green Swap - Upload Item</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="module" src="js/upload.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo">Green Swap</div>
+      <nav class="nav">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="browse.html">Browse Items</a></li>
+          <li><a href="upload.html" class="active">Upload Item</a></li>
+          <li><a href="login.html">Login / Signup</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Toggle navigation menu">
+          &#9776;
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="form-section container">
+      <h2>Upload New Item</h2>
+      <form id="uploadForm" novalidate>
+        <div class="form-group">
+          <label for="itemName">Item Name:</label>
+          <input type="text" id="itemName" name="itemName" required />
+          <small class="error-message"></small>
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" rows="4" required></textarea>
+          <small class="error-message"></small>
+        </div>
+        <div class="form-group">
+          <label for="condition">Condition:</label>
+          <select id="condition" name="condition" required>
+            <option value="">Select condition</option>
+            <option value="New">New</option>
+            <option value="Fairly Used">Fairly Used</option>
+            <option value="Used">Used</option>
+          </select>
+          <small class="error-message"></small>
+        </div>
+        <div class="form-group">
+          <label for="category">Category:</label>
+          <select id="category" name="category" required>
+            <option value="">Select category</option>
+            <option value="Books">Books</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Others">Others</option>
+          </select>
+          <small class="error-message"></small>
+        </div>
+        <div class="form-group">
+          <label for="imageUpload">Upload Image:</label>
+          <input type="file" id="imageUpload" name="imageUpload" accept="image/*" required />
+          <small class="error-message"></small>
+          <div id="imagePreview" class="image-preview"></div>
+        </div>
+        <div class="form-group">
+          <label for="desiredItem">Desired Item for Swap (optional):</label>
+          <input type="text" id="desiredItem" name="desiredItem" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2025 Green Swap. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
